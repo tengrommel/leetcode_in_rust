@@ -1,5 +1,6 @@
 struct Solution;
 
+#[derive(PartialEq, Eq, Debug)]
 struct ListNode {
     value: u32,
     next: Option<Box<ListNode>>,
@@ -60,4 +61,20 @@ impl Solution {
 }
 
 #[test]
-fn test() {}
+fn test() {
+    // helper function for test
+    pub fn to_list(vec: Vec<u32>) -> Option<Box<ListNode>> {
+        let mut current = None;
+        for &v in vec.iter().rev() {
+            let mut node = ListNode::new(v);
+            node.next = current;
+            current = Some(Box::new(node));
+        }
+        current
+    }
+
+    assert_eq!(
+        Solution::add_two_numbers(to_list(vec![2, 4, 3]), to_list(vec![5, 6, 4])),
+        to_list(vec![7, 0, 8])
+    );
+}

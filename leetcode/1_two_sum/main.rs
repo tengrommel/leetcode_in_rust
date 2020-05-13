@@ -12,9 +12,9 @@ impl Solution {
             match t.get(&(target - nums[i])) {
                 Some(n) => {
                     if i != *n {
-                        return vec![i as i32, n.clone() as i32]
+                        return vec![i as i32, n.clone() as i32];
                     }
-                },
+                }
                 None => {}
             }
         }
@@ -26,5 +26,3 @@ impl Solution {
 fn test() {
     assert_eq!(Solution::two_sum(vec![2, 7, 11, 15], 9), vec![0, 1]);
 }
-
-

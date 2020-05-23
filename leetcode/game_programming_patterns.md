@@ -123,3 +123,72 @@ instead of re-inventing them.
 - To wrap it up, there’s a short See Also section that shows how this pattern relates to
   others and points you to real-world open source code that uses it.
 
+# What is Software Architecture?
+
+If you read this book cover to cover, you won’t come away knowing the linear algebra behind
+3D graphics or the calculus behind game physics. It won’t show you how to alpha-beta prune
+your AI’s search tree or simulate a room’s reverberation in your audio playback.
+
+Wow, this paragraph would make a terrible ad for the book.
+
+Instead, this book is about the code between all of that. It’s less about writing code than it is
+about organizing it. Every program has some organization, even if it’s just “jam the whole
+thing into main() and see what happens”, so I think it’s more interesting to talk about what
+makes for good organization. How do we tell a good architecture from a bad one?
+
+I’ve been mulling over this question for about five years. Of course, like you, I have an
+intuition about good design. We’ve all suffered through codebases so bad, the best you could
+hope to do for them is take them out back and put them out of their misery.
+
+Let’s admit it, most of us are responsible for a few of those.
+
+A lucky few have had the opposite experience, a chance to work with beautifully designed
+code. The kind of codebase that feels like a perfectly appointed luxury hotel festooned with
+concierges waiting eagerly on your every whim. What’s the difference between the two?
+
+# What is good software architecture?
+
+> For me, good design means that when I make a change, it's as if the entire program was crafted in anticipation of it. I can solve a task with just a few choice function calls that slot in perfectly, leaving not the slightest ripple on the placid surface of the code.
+
+That sounds pretty, but it's not exactly actionable. "Just write your code so that changes don't disturb its placid surface." Right.
+
+Let me break that down a bit. The first key piece is that architecture is about change.
+Someone has to be modifying the codebase. If no one is touching the code — whether because
+it’s perfect and complete or so wretched no one will sully their text editor with it — its design
+is irrelevant. The measure of a design is how easily it accommodates changes. With no
+changes, it’s a runner who never leaves the starting line.
+
+# How do you make a change?
+
+Before you can change the code to add a new feature, to fix a bug, or for whatever reason
+caused you to fire up your editor, you have to understand what the existing code is doing. You
+don’t have to know the whole program, of course, but you need to load all of the relevant
+pieces of it into your primate brain.
+
+It’s weird to think that this is literally an OCR process.
+
+We tend to gloss over this step, but it’s often the most time-consuming part of programming. If
+you think paging some data from disk into RAM is slow, try paging it into a simian cerebrum over a pair of optical nerves.
+
+Once you’ve got all the right context into your wetware, you think for a bit and figure out your
+solution. There can be a lot of back and forth here, but often this is relativel straightforward.
+
+Once you understand the problem and the parts of the code it touches, the actual coding is
+sometimes trivial.
+
+You beat your meaty fingers on the keyboard for a while until the right colored lights blink on
+screen and you’re done, right? Not just yet! Before you write tests and send it off for code
+review, you often have some cleanup to do.
+
+Did I say “tests”? Oh, yes, I did. It’s hard to write unit tests for some game code, but a large
+fraction of the codebase is perfectly testable.
+
+I won’t get on a soapbox here, but I’ll ask you to consider doing more automated testing if you
+aren’t already. Don’t you have better things to do than manually validate stuff over and over
+again?
+
+You jammed a bit more code into your game, but you don’t want the next person to come along
+to trip over the wrinkles you left throughout the source. Unless the change is minor, there’s
+usually a bit of reorganization to do to make your new code integrate seamlessly with the rest
+of the program. If you do it right, the next person to come along won’t be able to tell when any
+line of code was written

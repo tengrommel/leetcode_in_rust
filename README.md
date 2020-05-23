@@ -50,3 +50,5 @@ Given a 32-bit signed integer, reverse digits of an integer
 
 - 8、String to Integer (atoi)
 
+- 9、Palindrome Number
+> Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.

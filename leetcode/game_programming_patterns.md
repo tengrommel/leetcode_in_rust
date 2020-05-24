@@ -192,3 +192,66 @@ to trip over the wrinkles you left throughout the source. Unless the change is m
 usually a bit of reorganization to do to make your new code integrate seamlessly with the rest
 of the program. If you do it right, the next person to come along won’t be able to tell when any
 line of code was written
+
+# At What Cost?
+>This sounds great, right? Decouple everything and you’ll be able to code like the wind. Each
+ change will mean touching only one or two select methods, and you can dance across the
+ surface of the codebase leaving nary a shadow.
+
+This feeling is exactly why people get excited about abstraction, modularity, design patterns,
+and software architecture. A well-architected program really is a joyful experience to work in,
+and everyone loves being more productive. Good architecture makes a huge difference in
+productivity. It’s hard to overstate how profound an effect it can have.
+
+But, like all things in life, it doesn’t come free. Good architecture takes real effort and
+discipline. Every time you make a change or implement a feature, you have to work hard to
+integrate it gracefully into the rest of the program. You have to take great care to both 
+organize the code well and keep it organized throughout the thousands of little changes that  
+make up a development cycle.
+
+The second half of this — maintaining your design — deserves special attention. I’ve seen many
+programs start out beautifully and then die a death of a thousand cuts as programmers add “just
+one tiny little hack” over and over again.
+
+Like gardening, it’s not enough to put in new plants. You must also weed and prune.
+You have to think about which parts of the program should be decoupled and introduce
+abstractions at those points. Likewise, you have to determine where extensibility should be
+engineered in so future changes are easier to make.
+
+People get really excited about this. They envision future developers (or just their future self)
+stepping into the codebase and finding it open-ended, powerful, and just beckoning to be extended. They imagine The One Game Engine To Rule Them All.
+
+But this is where it starts to get tricky. Whenever you add a layer of abstraction or a place
+where extensibility is supported, you’re speculating that you will need that flexibility later.
+You’re adding code and complexity to your game that takes time to develop, debug, and
+maintain.
+
+That effort pays off if you guess right and end up touching that code later. But predicting the
+future is hard, and when that modularity doesn’t end up being helpful, it quickly becomes
+actively harmful. After all, it is more code you have to deal with.
+
+# Performance and Speed
+
+There’s another critique of software architecture and abstraction that you hear sometimes, especially in game development: that it hurts your game’s performance. Many patterns that make your code more flexible rely on virtual dispatch, interfaces, pointers, messages, and other mechanisms that all have at least some runtime cost.
+
+There’s a spectrum of flexibility here. When you write code to call a concrete method in some class, you’re fixing that class at author time — you’ve hard-coded which class you call into. When you go through a virtual method or interface, the class that gets called isn’t known until runtime. That’s much more flexible but implies some runtime overhead.
+
+Template metaprogramming is somewhere between the two. There, you make the decision of which class to call at compile time when the template is instantiated.
+
+But performance is all about assumptions. The practice of optimization thrives on concrete  limitations. Can we safely assume we’ll never have more than 256 enemies? Great, we can pack  an ID into a single byte. Will we only call a method on one concrete type here? Good, we can  statically dispatch or inline it. Are all of the entities going to be the same class? Great,  we can make a nice contiguous array of them.
+
+This doesn’t mean flexibility is bad, though! It lets us change our game quickly, and development speed is absolutely vital for getting to a fun experience. No one, not even Will Wright, can come up with a balanced game design on paper. It demands iteration and experimentation.
+
+The faster you can try out ideas and see how they feel, the more you can try and the more likely you are to find something great. Even after you’ve found the right mechanics, you need plenty of time for tuning. A tiny imbalance can wreck the fun of a game.
+
+There’s no easy answer here. Making your program more flexible so you can prototype faster will have some performance cost. Likewise, optimizing your code will make it less flexible. My experience, though, is that it’s easier to make a fun game fast than it is to make a fast game fun. One compromise is to keep the code flexible until the design settles down and then tear out some of the abstraction later to improve your performance.
+
+# Design Patterns Revisited
+
+- Command
+> Command is one of my favorite patterns. Most large programs I write, games or otherwise, end
+up using it somewhere. When I’ve used it in the right place, it’s neatly untangled some really
+gnarly code. For such a swell pattern, the Gang of Four has a predictably abstruse description:
+
+    Encapsulate a request as an object, thereby letting users parameterize clients with
+    different requests, queue or log requests, and support undoable operations.

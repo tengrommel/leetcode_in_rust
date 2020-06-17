@@ -3,3 +3,5 @@
 /machine/rustymachine-regression/target/
 /machine/ml-utils/target/
 /data_structure/structure_enum/target/
+/data_structure/mechanisms/target/
+/data_structure/result_option/target/

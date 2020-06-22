@@ -6,20 +6,20 @@ use std::vec::Vec;
 
 #[derive(Debug, Deserialize)]
 pub struct BostonHousing {
-    crim: f64,
-    zn: f64,
-    indus: f64,
-    chas: f64,
-    now: f64,
-    rm: f64,
-    age: f64,
-    dis: f64,
-    rad: f64,
-    tax: f64,
-    ptratio: f64,
-    black: f64,
-    lstat: f64,
-    medv: f64,
+    crim: f64,    // per capita crime rate by town
+    zn: f64,      // proportion of residential land zoned for lots over 25,000 sq.ft.
+    indus: f64,   // proportion of non-retail business acres per town.
+    chas: f64,    // Charles River dummy variable (= 1 if tract bounds river; 0 otherwise).
+    nox: f64,     // nitrogen oxides concentration (parts per 10 million).
+    rm: f64,      // average number of rooms per dwelling.
+    age: f64,     // proportion of owner-occupied units built prior to 1940.
+    dis: f64,     // weighted mean of distances to five Boston employment centres.
+    rad: f64,     // index of accessibility to radial highways.
+    tax: f64,     // full-value property-tax rate per $10,000.
+    ptratio: f64, // pupil-teacher ratio by town.
+    black: f64,   // 1000(Bk - 0.63)^2 where Bk is the proportion of blacks by town.
+    lstat: f64,   // lower status of the population (percent).
+    medv: f64,    // median value of owner-occupied homes in $1000s.
 }
 
 impl BostonHousing {

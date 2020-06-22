@@ -6,14 +6,10 @@ use std::io::BufReader;
 use std::path::Path;
 use std::process::exit;
 use std::vec::Vec;
-
-// use ndarray::{Array, arr1};
 use rand;
 use rand::seq::SliceRandom;
 use rand::thread_rng;
 
-use ml_utils::datasets::get_boston_records_from_file;
-use ml_utils::sup_metrics::r_squared_score;
 
 pub fn run() -> Result<(), Box<dyn Error>> {
     let fl = "data/housing.csv";

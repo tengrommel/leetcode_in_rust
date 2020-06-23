@@ -37,3 +37,10 @@ In machine learning tasks, it is a good practice to shuffle the incoming dataset
 Rust_machine is a general-purpose machine learning library written entirely in Rust. The main aims of the rusty_machine are ease of use and speed without having to depend on a huge number of external libraries. The consistency in the api is achieved using the rust's trait system. It currently uses rulinalg for its linear algebra back end.
 
 To use the rusty machine library, we will need to convert the data vectors into rulinalg supported Matrices. 
+
+In rusty machine the two key methods that are implemented throughout all the model classes are the train and predict methods. Readers familiar with the sciki-learn api might be comfortable in it. As the name suggests, we will need to pass the training data to the train method for the respective models and the test data to the predict method of the respective models.
+
+# 2.4 Linear Regression
+
+> Ordinary Least Squares linear regression is the method where a linear model with coefficients w=(w1,w2,...,wp) is optimized to minimize the residual sum of squares between the observed responses in the dataset, and the responses predicted by the linear approximation. 
+

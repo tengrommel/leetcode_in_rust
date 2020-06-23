@@ -1,6 +1,6 @@
 use std::cmp::Ordering;
 
-pub fn r_squared_store(y_test: &[f64], y_preds: &[f64]) -> f64 {
+pub fn r_squared_score(y_test: &[f64], y_preds: &[f64]) -> f64 {
     let model_variance: f64 = y_test
         .iter()
         .zip(y_preds.iter())

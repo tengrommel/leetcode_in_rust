@@ -30,3 +30,10 @@ By the end of this chapter, you should have a fair understanding of how to creat
 
 For showing usage of regression, we will be using the boston housing dataset.1 You can also download the data from the kaggle page for boston dataset.2 The dataset has 14 features and has 506 samples. The following is a description of the dataset.
 
+In machine learning tasks, it is a good practice to shuffle the incoming dataset. Shuffling data serves the purpose of reducing variance and making sure that models remain general and overfit less. Shuffling helps in making sure that the train/test/validation samples of the dataset are representative of the overall distribution of the data.
+
+# 2.3 Rusty_Machine Library
+
+Rust_machine is a general-purpose machine learning library written entirely in Rust. The main aims of the rusty_machine are ease of use and speed without having to depend on a huge number of external libraries. The consistency in the api is achieved using the rust's trait system. It currently uses rulinalg for its linear algebra back end.
+
+To use the rusty machine library, we will need to convert the data vectors into rulinalg supported Matrices. 

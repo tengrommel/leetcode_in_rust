@@ -11,6 +11,7 @@ use std::process::exit;
 use std::vec::Vec;
 
 use rusty_machine;
+use rusty_machine::linalg::Vector;
 use rusty_machine::linalg::Matrix;
 // use rusty_machine::linalg::BaseMatrix;
 use rusty_machine::analysis::score::neg_mean_squared_error;
@@ -20,7 +21,6 @@ use rusty_machine::learning::gp::GaussianProcess;
 use rusty_machine::learning::lin_reg::LinRegressor;
 use rusty_machine::learning::toolkit::kernel;
 use rusty_machine::learning::SupModel;
-use rusty_machine::linalg::Vector;
 
 // use ndarray::{Array, arr1};
 use rand;
@@ -76,7 +76,7 @@ pub fn run() -> Result<(), Box<dyn Error>> {
     let mut lin_model = LinRegressor::default();
     println!("{:?}", lin_model);
 
-    // Train the model
+    // Train the model 训练模型
     lin_model.train(&boston_x_train, &boston_y_train);
 
     // Now we will predict
